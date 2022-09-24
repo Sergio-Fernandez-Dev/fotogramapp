@@ -1,0 +1,29 @@
+//Colors
+$blue-color: #17C9D4;
+$white-color: #F9F9F9;
+$soft-white-color: #D7D7D7;
+$black-color: #1A1A1A;
+$soft-black-color: #4F4F4F;
+
+$color: (
+  "primary": $blue-color,
+  "background": $white,
+  "border": $soft-white-color,
+  "text": $soft-black-color,
+  "text-bold": $black-color,
+);
+
+// Fonts
+$primary-font-family: "Oxygen";
+$secondary-font-family: "Roboto";
+$logo-font-family: "Lobster";
+
+$font-size: (
+  "sm": 1.2rem,
+  "md": 1.8rem,
+);
+
+// Breakpoints
+$screen-md: 480px;
+$screen-lg: 960px;
+
