@@ -5,17 +5,19 @@ import { RouterLink, RouterView } from "vue-router";
 <template>
   <header class="header">
     <nav class="nav">
-      <RouterLink class="nav__link" to="/">Fotogramapp</RouterLink>
+      <RouterLink class="nav__link" to="/">
+        <h1 class="nav__h1">Fotogramapp</h1>
+      </RouterLink>
     </nav>
   </header>
   <main class="main">
     <RouterView />
   </main>
-  <footer class="footer"></footer>
+  <footer class="footer">Sergio Fernández Fernández</footer>
 </template>
 
 <style lang="scss">
-.header {
+  .header {
   width: 100%;
   height: 7.6rem;
   background-color: map-get($map: $color, $key: "primary");
@@ -29,8 +31,18 @@ import { RouterLink, RouterView } from "vue-router";
   @include flex($direction: row, $justify: "flex-start");
   &__link {
     color: white;
+  }
+  &__h1 {
     font-family: $logo-font-family;
     font-size: map-get($map: $font-size, $key: "lg");
   }
+}
+
+.footer {
+  width: 1240px;
+  height: 7.2rem;
+  border-top: 0.1rem solid map-get($map: $color, $key: "border");
+  font-size: map-get($map: $font-size, $key: "md");
+  @include flex($direction: row);
 }
 </style>

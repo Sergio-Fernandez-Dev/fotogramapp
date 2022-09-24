@@ -1,6 +1,9 @@
 <script setup>
+import ImageCard from '../components/card/ImageCard.vue';
 </script>
 
 <template>
-  <h1>HOME</h1>
+  <div class="grid">
+    <ImageCard />
+  </div>
 </template>
