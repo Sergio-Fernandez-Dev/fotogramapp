@@ -1,38 +1,36 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "./components/HelloWorld.vue";
 </script>
 
 <template>
-  <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="@/assets/logo.svg"
-      width="125"
-      height="125"
-    />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
+  <header class="header">
+    <nav class="nav">
+      <RouterLink class="nav__link" to="/">Fotogramapp</RouterLink>
+    </nav>
   </header>
-
-  <RouterView />
+  <main class="main">
+    <RouterView />
+  </main>
+  <footer class="footer"></footer>
 </template>
 
 <style lang="scss">
-@import "@/assets/scss/base/reset";
-@import "@/assets/scss/base/typo";
-@import "@/assets/scss/base/base";
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+.header {
+  width: 100%;
+  height: 7.6rem;
+  background-color: map-get($map: $color, $key: "primary");
+  @include flex($direction: row);
 }
 
+.nav {
+  width: 1240px; 
+  height: 100%;
+  padding: 0 3rem;
+  @include flex($direction: row, $justify: "flex-start");
+  &__link {
+    color: white;
+    font-family: $logo-font-family;
+    font-size: map-get($map: $font-size, $key: "lg");
+  }
+}
 </style>
