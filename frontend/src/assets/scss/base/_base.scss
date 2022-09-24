@@ -9,7 +9,7 @@ body {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   min-height: 100vh;
-  background-color: white;
+  background-color: map-get($color, "background");
   font-size: 16rem;
   font-family: $primary-font-family;
   color: map-get($color, "text");

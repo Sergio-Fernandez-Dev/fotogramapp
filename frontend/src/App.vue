@@ -23,7 +23,7 @@ import { RouterLink, RouterView } from "vue-router";
 }
 
 .nav {
-  width: 1240px; 
+  width: 1240px;
   height: 100%;
   padding: 0 3rem;
   @include flex($direction: row, $justify: "flex-start");
