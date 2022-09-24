@@ -1,15 +1,15 @@
 .main {
   width: 100%;
-  max-width: 1240px; 
-  font-size: map-get($map: $font-size, $key: "mv-lg");
+  max-width: 1240px;
+  font-size: map-get($map: $font-size, $key: "sm");
   background-color: map-get($color, "background");
-  min-height: calc(100vh - (5.5rem + 10rem));
+  min-height: calc(100vh - (7.6rem + 7.2rem));
   padding: 5rem 2rem;
-  padding-bottom: 10rem; 
+  padding-bottom: 10rem;
   @include flex(column);
 
   @include screen($screen-md) {
     padding: 8rem 4rem;
-    min-height: calc(100vh - (11rem + 10rem));
+
   }
 }

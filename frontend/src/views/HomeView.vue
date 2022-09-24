@@ -1,5 +1,5 @@
 <script setup>
-import ImageCard from '../components/card/ImageCard.vue';
+import ImageCard from "../components/card/ImageCard.vue";
 </script>
 
 <template>
