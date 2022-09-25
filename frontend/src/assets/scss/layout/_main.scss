@@ -4,9 +4,8 @@
   font-size: map-get($map: $font-size, $key: "sm");
   background-color: map-get($color, "background");
   min-height: calc(100vh - (7.6rem + 7.2rem));
-  padding: 5rem 2rem;
-  padding-bottom: 10rem;
-  @include flex(column);
+  padding-bottom: 1rem;
+  @include flex($direction: column, $justify: flex-start);
 
   @include screen($screen-md) {
     padding: 8rem 4rem;

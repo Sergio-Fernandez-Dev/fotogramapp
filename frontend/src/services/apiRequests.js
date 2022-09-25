@@ -5,11 +5,11 @@ const baseUrl = "http://localhost:3000/";
 async function doGetRequest(entity) {
   const options = {
     method: "GET",
-    url: baseUrl + entity,
+    url: baseUrl + entity.toLowerCase(),
   };
-  const result = await sendRequest(options);
+  const data = await sendRequest(options);
 
-  return result.data;
+  return data;
 }
 
 

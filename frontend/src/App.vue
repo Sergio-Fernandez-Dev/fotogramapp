@@ -25,10 +25,11 @@ import { RouterLink, RouterView } from "vue-router";
 }
 
 .nav {
-  width: 1240px;
+  width: 100%;
+  max-width: $max-width;
   height: 100%;
   padding: 0 3rem;
-  @include flex($direction: row, $justify: "flex-start");
+  @include flex($direction: row);
   &__link {
     color: white;
   }
@@ -39,7 +40,8 @@ import { RouterLink, RouterView } from "vue-router";
 }
 
 .footer {
-  width: 1240px;
+  width: 100%;
+  max-width: $max-width;
   height: 7.2rem;
   border-top: 0.1rem solid map-get($map: $color, $key: "border");
   font-size: map-get($map: $font-size, $key: "md");

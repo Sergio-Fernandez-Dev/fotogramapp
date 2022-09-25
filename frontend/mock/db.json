@@ -4,37 +4,37 @@
          "id": 1,
          "title": "Atardecer en Oviedo",
          "location": "c/Uria, Oviedo",
-         "url": "https://localhost:5173/storage/images/1.jpg"
+         "url": "../../mock/storage/images/1.jpg"
       },
       {
          "id": 2,
          "title": "De fiesta",
          "location": "c/dkio, Oviedo",
-         "url": "https://localhost:5173/storage/images/2.jpg"
+         "url": "../../mock/storage/images/2.jpg"
       },
       {
          "id": 3,
          "title": "Atardecer en Gijon",
          "location": "c/Uria, Gijon",
-         "url": "https://localhost:5173/storage/images/3.jpg"
+         "url": "../../mock/storage/images/3.jpg"
       },
       {
          "id": 4,
          "title": "Pajarito en arbol",
          "location": "c/algo, madrid",
-         "url": "https://localhost:5173/storage/images/4.jpg"
+         "url": "../../mock/storage/images/4.jpg"
       },
       {
          "id": 5,
          "title": "De fiesta otra vez",
          "location": "c/dkio, Oviedo",
-         "url": "https://localhost:5173/storage/images/5.jpg"
+         "url": "../../mock/storage/images/5.jpg"
       },
       {
          "id": 6,
          "title": "partido del domingo",
          "location": "El molinon, Gijon",
-         "url": "https://localhost:5173/storage/images/6.jpg"
+         "url": "../../mock/storage/images/6.jpg"
       }
    ]
 }
