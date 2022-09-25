@@ -2,21 +2,33 @@
 import IconAddLocation from "@/components/icons/IconAddLocation.vue";
 import IconOptions from "@/components/icons/IconOptions.vue";
 import IconLocation from "@/components/icons/IconLocation.vue";
+import MenuOptions from "./menus/MenuOptions.vue";
+import { ref } from "vue";
+import { toggle } from "@/services/menuNavigation";
+
+const menuOptions = ref(false);
+const titleInput = ref(false);
 
 defineProps({
   url: String,
   title: String,
   location: String,
 });
+
 </script>
 
 <template>
   <section class="card">
-    <div class="card__img" :style="`background-image:url(${url})`"></div>
+    <div
+      class="card__img"
+      :style="`background-image:url(${url})`"
+      v-if="!menuOptions && !titleInput"
+    ></div>
+    <MenuOptions v-if="menuOptions" />
     <div class="card__wrapper">
       <section class="card__buttons">
         <IconAddLocation />
-        <IconOptions />
+      <IconOptions @click="menuOptions = toggle(menuOptions)" />
       </section>
     </div>
     <section class="card__info">
@@ -31,8 +43,8 @@ defineProps({
 
 <style lang="scss" scoped>
 .card {
-  border:  0.1rem solid map-get($map: $color, $key: "border");
-  box-shadow: 0.3rem 0.3rem 0.8rem ;
+  border: 0.1rem solid map-get($map: $color, $key: "border");
+  box-shadow: 0.3rem 0.3rem 0.8rem;
 
   &__buttons {
     width: 5rem;
@@ -45,7 +57,6 @@ defineProps({
   }
   &__info {
     padding: 1rem 2rem;
-
   }
   &__location {
     font-family: $secondary-font-family;
@@ -65,7 +76,7 @@ defineProps({
   &__wrapper {
     width: 100%;
     padding: 0.5rem 2rem;
-    border-bottom:  0.1rem solid map-get($map: $color, $key: "border");
+    border-bottom: 0.1rem solid map-get($map: $color, $key: "border");
     @include flex($direction: row, $justify: flex-end);
   }
 }

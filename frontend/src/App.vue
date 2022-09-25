@@ -20,7 +20,7 @@ import { RouterLink, RouterView } from "vue-router";
   .header {
   width: 100%;
   height: 7.6rem;
-  background-color: map-get($map: $color, $key: "primary");
+  background-color: $black-color;
   @include flex($direction: row);
 }
 
@@ -31,7 +31,7 @@ import { RouterLink, RouterView } from "vue-router";
   padding: 0 3rem;
   @include flex($direction: row);
   &__link {
-    color: white;
+    color: $blue-color;
   }
   &__h1 {
     font-family: $logo-font-family;

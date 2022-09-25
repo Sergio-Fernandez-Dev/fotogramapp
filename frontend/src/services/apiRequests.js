@@ -2,7 +2,7 @@ import axios from "axios";
 
 const baseUrl = "http://localhost:3000/"; 
 
-async function doGetRequest(entity) {
+const doGetRequest = async (entity) => {
   const options = {
     method: "GET",
     url: baseUrl + entity.toLowerCase(),
@@ -13,7 +13,7 @@ async function doGetRequest(entity) {
 }
 
 
-async function sendRequest(options) {
+const sendRequest = async (options) => {
   try {
     const response = await axios.request(options);
 
