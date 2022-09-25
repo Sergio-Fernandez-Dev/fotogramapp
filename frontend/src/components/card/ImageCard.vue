@@ -2,6 +2,12 @@
 import IconAddLocation from "./icons/IconAddLocation.vue";
 import IconOptions from "./icons/IconOptions.vue";
 import IconLocation from "./icons/IconLocation.vue";
+
+defineProps({
+  url: String,
+  title: String,
+  location: String,
+});
 </script>
 
 <template>

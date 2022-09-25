@@ -6,7 +6,9 @@
     "build": "vite build",
     "preview": "vite preview --port 4173",
     "test:unit": "vitest --environment jsdom",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "jserver": "json-server --server --watch ./mock/db.json"
+
   },
   "dependencies": {
     "pinia": "^2.0.21",
@@ -26,5 +28,8 @@
     "sass-loader": "^13.0.2",
     "vite": "^3.0.9",
     "vitest": "^0.23.0"
+  },
+  "optionalDependencies": {
+    "json-server": "^0.17.0"
   }
 }
