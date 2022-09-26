@@ -2,22 +2,25 @@
 import ImageCard from "@/components/card/ImageCard.vue";
 import { onMounted, ref } from "vue";
 import { doGetRequest } from "@/services/apiRequests";
+import { useCardStore } from "@/stores/cardList";
 
-const imageList = ref({});
+const store = useCardStore();
 
 onMounted(async () => {
-  imageList.value = await doGetRequest("images");
+  store.cardList.value = await doGetRequest("images");
+  console.log(store.cardList.value)
 });
 </script>
 
 <template>
   <div class="grid">
     <ImageCard
-      v-for="(image, index) in imageList"
+      v-for="(card, index) in store.cardList.value"
       :key="index"
-      :url="image.url"
-      :title="image.title"
-      :location="image.location"
+      :id="card.id"
+      :url="card.url"
+      :title="card.title"
+      :location="card.location"
     />
   </div>
 </template>

@@ -3,18 +3,33 @@ import IconAddLocation from "@/components/icons/IconAddLocation.vue";
 import IconOptions from "@/components/icons/IconOptions.vue";
 import IconLocation from "@/components/icons/IconLocation.vue";
 import MenuOptions from "./menus/MenuOptions.vue";
+import MenuEdit from "./menus/MenuEdit.vue";
 import { ref } from "vue";
-import { toggle } from "@/services/menuNavigation";
+import { useCardStore } from "@/stores/cardList";
 
-const menuOptions = ref(false);
-const titleInput = ref(false);
+const store = useCardStore();
+const cardList = store.cardList.value;
+console.log(cardList);
+
+const currentMenu = ref("image");
+const menu = {
+  image: "image",
+  options: "options",
+  delete: "delete",
+  edit: "edit",
+  location: "location",
+};
+const goToMenu = (menuName) => {
+  currentMenu.value = menuName;
+};
+
 
 defineProps({
+  id: Number,
   url: String,
   title: String,
   location: String,
 });
-
 </script>
 
 <template>
@@ -22,13 +37,24 @@ defineProps({
     <div
       class="card__img"
       :style="`background-image:url(${url})`"
-      v-if="!menuOptions && !titleInput"
+      v-if="currentMenu == menu.image"
     ></div>
-    <MenuOptions v-if="menuOptions" />
+    <MenuOptions v-if="currentMenu == menu.options" @menuChanged="goToMenu" />
+    <MenuEdit
+      v-if="currentMenu == menu.edit"
+      :title="title"
+      @titleChanged="updateTitle"
+    />
     <div class="card__wrapper">
       <section class="card__buttons">
         <IconAddLocation />
-      <IconOptions @click="menuOptions = toggle(menuOptions)" />
+        <IconOptions
+          @click="
+            currentMenu != menu.options
+              ? goToMenu(menu.options)
+              : goToMenu(menu.image)
+          "
+        />
       </section>
     </div>
     <section class="card__info">

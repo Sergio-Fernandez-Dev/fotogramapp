@@ -1,12 +1,17 @@
 <script setup>
 import IconPencil from "../../icons/IconPencil.vue";
 import IconTrash from "../../icons/IconTrash.vue";
+
+const emit = defineEmits(["menuChanged"]);
+const handleMenuChanged = (menuName) => {
+  emit("menuChanged", menuName);
+};
 </script>
 
 <template>
   <section class="menu">
     <div class="menu__wrapper">
-      <div class="menu__option">
+      <div class="menu__option" @click="handleMenuChanged('edit')">
         <IconPencil />
         <p class="menu__p">Editar el título</p>
       </div>
@@ -28,7 +33,7 @@ import IconTrash from "../../icons/IconTrash.vue";
     padding: 2rem;
     @include flex($direction: row);
   }
-  &__p { 
+  &__p {
     padding-left: 1rem;
     cursor: pointer;
     font-size: map-get($map: $font-size, $key: "md");
