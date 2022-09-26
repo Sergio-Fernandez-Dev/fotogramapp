@@ -17,7 +17,7 @@ class ImagesStoreRouteTest extends TestCase
         $this->withExceptionHandling();
 
         $request = Image::factory()->create();
-        $response = $this->post(\route('images.store'), $request);
+        $response = $this->post(\route('images.store'),  [$request]);
         $response->assertStatus(200);
     }
 
@@ -27,7 +27,15 @@ class ImagesStoreRouteTest extends TestCase
         $this->withExceptionHandling();
 
         $request = Image::factory()->create();
-        $this->post(\route('images.store'), $request);
+        $response = $this->post(\route('images.store'), [$request]);
         $this->assertCount(1, Image::all());
+    }
+
+    public function test_response_is_equal_to_request() {
+        $this->withExceptionHandling();
+
+        $request = Image::factory()->create();
+        $response = $this->post(\route('images.store'), [$request]);
+        $this->assertEquals($request, $response);
     }
 }
