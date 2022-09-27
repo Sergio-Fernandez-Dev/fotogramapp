@@ -73,6 +73,10 @@ class ImageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $result = Image::find($id);
+        if ($result == null){
+            return response('Usuario no encontrado');
+        }
+        $result->delete();
     }
 }
