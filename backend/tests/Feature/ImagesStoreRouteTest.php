@@ -36,7 +36,8 @@ class ImagesStoreRouteTest extends TestCase
         $this->assertCount(1, Image::all());
     }
 
-    public function test_image_is_not_stored_when_a_wrong_format_parameter_is_given() {
+    public function test_image_is_not_stored_when_a_wrong_format_parameter_is_given()
+    {
         $this->withExceptionHandling();
 
         $request = [
@@ -48,7 +49,8 @@ class ImagesStoreRouteTest extends TestCase
         $this->assertCount(0, Image::all());
     }
 
-    public function test_image_is_not_stored_when_a_required_param_is_missed() {
+    public function test_image_is_not_stored_when_a_required_param_is_missed()
+    {
         $this->withExceptionHandling();
 
         $request = [
