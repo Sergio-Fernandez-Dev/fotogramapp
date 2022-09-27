@@ -16,26 +16,46 @@ class ImagesStoreRouteTest extends TestCase
 
         $this->withExceptionHandling();
 
-        $request = Image::factory()->create();
-        $response = $this->post(\route('images.store'),  [$request]);
+        $request = [
+            'title' => 'test title',
+            'url' => 'http://example.com',
+        ];
+        $response = $this->post(\route('images.store'),  $request);
         $response->assertStatus(200);
     }
 
     public function test_new_image_is_stored()
     {
-
         $this->withExceptionHandling();
 
-        $request = Image::factory()->create();
-        $response = $this->post(\route('images.store'), [$request]);
+        $request = [
+            'title' => 'test title',
+            'url' => 'http://example.com',
+        ];
+        $response = $this->post(\route('images.store'), $request);
         $this->assertCount(1, Image::all());
     }
 
-    public function test_response_is_equal_to_request() {
+    public function test_image_is_not_stored_when_a_wrong_format_parameter_is_given() {
         $this->withExceptionHandling();
 
-        $request = Image::factory()->create();
-        $response = $this->post(\route('images.store'), [$request]);
-        $this->assertEquals($request, $response);
+        $request = [
+            'title' => 15,
+            'url' => 'http://example.com',
+        ];
+
+        $response = $this->post(\route('images.store'), $request);
+        $this->assertCount(0, Image::all());
+    }
+
+    public function test_image_is_not_stored_when_a_required_param_is_missed() {
+        $this->withExceptionHandling();
+
+        $request = [
+            'url' => 'http://example.com',
+        ];
+
+        $response = $this->post(\route('images.store'), $request);
+        $this->assertCount(0, Image::all());
     }
 }
