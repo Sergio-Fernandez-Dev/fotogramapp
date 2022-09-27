@@ -43,11 +43,11 @@ class ImageController extends Controller
      */
     public function show($id)
     {
-        $image[] = Image::find($id);
-        if ($image[0] == null) {
+        $result[] = Image::find($id);
+        if ($result[0] == null) {
             return response('Usuario no encontrado');
         }
-        return \response()->json($image);
+        return \response()->json($result);
     }
 
     /**
@@ -59,7 +59,10 @@ class ImageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $result = Image::find($id)
+            ->update($request->all());
+
+        return \response()->json($request);
     }
 
     /**
