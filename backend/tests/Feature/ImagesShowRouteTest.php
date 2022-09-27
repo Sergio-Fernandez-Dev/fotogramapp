@@ -15,9 +15,28 @@ class ImagesShowRouteTest extends TestCase
     {
         $this->withExceptionHandling();
 
-        $image = Image::factory()->create(['id' => 1]);
+        Image::factory()->create(['id' => 1]);
         $id = 1;
         $response = $this->get(\route('images.show'), [$id]);
         $response->assertStatus(200);
+    }
+
+    public function test_image_is_recived_when_id_is_provided()
+    {
+        $this->withExceptionHandling();
+
+        Image::factory()->create(['id' => 1]);
+        $id = 1;
+        $response = $this->get(\route('images.show'), [$id]);
+        $response->assertJsonCount(1);
+    }
+
+    public function test_image_is_not_recived_when_non_existent_id_is_provided() {
+        $this->withExceptionHandling();
+
+        Image::factory()->create(['id' => 1]);
+        $id = 2;
+        $response = $this->get(\route('images.show'), [$id]);
+        $response->assertJsonCount(1);
     }
 }
