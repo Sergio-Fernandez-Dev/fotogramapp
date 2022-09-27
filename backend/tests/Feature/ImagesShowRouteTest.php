@@ -30,13 +30,14 @@ class ImagesShowRouteTest extends TestCase
         $response->assertJsonCount(1);
     }
 
-    public function test_image_is_not_recived_when_non_existent_id_is_provided()
+    public function test_error_message_is_recived_when_non_existent_id_is_provided()
     {
         $this->withExceptionHandling();
 
         Image::factory()->create(['id' => 1]);
         $id = 2;
         $response = $this->get(\route('images.show', $id));
-        $response->assertJsonCount(1);
+        $response->assertSeeText('Usuario no encontrado');
     }
+
 }
