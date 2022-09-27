@@ -14,8 +14,8 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $images = Image::all();
-        return \response($images);
+        $result = Image::all();
+        return \response($result);
     }
 
     /**
@@ -31,7 +31,7 @@ class ImageController extends Controller
             'url' => ['required', 'string'],
         ]);
 
-        $image = Image::create($request->all());
+        $result = Image::create($request->all());
         return \response()->json($request);
     }
 
@@ -43,7 +43,8 @@ class ImageController extends Controller
      */
     public function show($id)
     {
-        //
+        $image[] = Image::find($id);
+        return \response()->json($image);
     }
 
     /**
