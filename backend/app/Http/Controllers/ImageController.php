@@ -44,6 +44,9 @@ class ImageController extends Controller
     public function show($id)
     {
         $image[] = Image::find($id);
+        if ($image[0] == null) {
+            return response('Usuario no encontrado');
+        }
         return \response()->json($image);
     }
 
