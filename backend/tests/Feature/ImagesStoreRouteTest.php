@@ -5,6 +5,8 @@ namespace Tests\Feature;
 use App\Models\Image;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class ImagesStoreRouteTest extends TestCase
@@ -13,12 +15,14 @@ class ImagesStoreRouteTest extends TestCase
 
     public function test_200_status_is_received()
     {
-
         $this->withExceptionHandling();
+
+        Storage::fake('test_storage');
+        $file = UploadedFile::fake()->create('file.jpg');
 
         $request = [
             'title' => 'test title',
-            'url' => 'http://example.com',
+            'image' => $file,
         ];
         $response = $this->post(\route('images.store'),  $request);
         $response->assertStatus(200);
@@ -28,9 +32,12 @@ class ImagesStoreRouteTest extends TestCase
     {
         $this->withExceptionHandling();
 
+        Storage::fake('test_storage');
+        $file = UploadedFile::fake()->create('file.jpg');
+
         $request = [
             'title' => 'test title',
-            'url' => 'http://example.com',
+            'image' => $file,
         ];
         $response = $this->post(\route('images.store'), $request);
         $this->assertCount(1, Image::all());
@@ -40,9 +47,12 @@ class ImagesStoreRouteTest extends TestCase
     {
         $this->withExceptionHandling();
 
+        Storage::fake('test_storage');
+        $file = UploadedFile::fake()->create('file.jpg');
+
         $request = [
             'title' => 15,
-            'url' => 'http://example.com',
+            'image' => $file,
         ];
 
         $response = $this->post(\route('images.store'), $request);
@@ -53,8 +63,11 @@ class ImagesStoreRouteTest extends TestCase
     {
         $this->withExceptionHandling();
 
+        Storage::fake('test_storage');
+        $file = UploadedFile::fake()->create('file.jpg');
+
         $request = [
-            'url' => 'http://example.com',
+            'title' => 'test title',
         ];
 
         $response = $this->post(\route('images.store'), $request);
