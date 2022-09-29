@@ -20,9 +20,8 @@ onMounted(async () => {
       v-for="(card, index) in store.cardList.value"
       :key="index"
       :id="card.id"
-      :url="card.url"
+      :url="card.image"
       :title="card.title"
-      :location="card.location"
     />
   </div>
 </template>

@@ -1,28 +1,29 @@
 <script setup>
-import IconAddLocation from "@/components/icons/IconAddLocation.vue";
-import IconOptions from "@/components/icons/IconOptions.vue";
-import IconLocation from "@/components/icons/IconLocation.vue";
-import MenuOptions from "./menus/MenuOptions.vue";
 import MenuEdit from "./menus/MenuEdit.vue";
 import { ref } from "vue";
+import IconPencil from "../icons/IconPencil.vue";
+import IconTrash from "../icons/IconTrash.vue";
 
 const currentMenu = ref("image");
 const menu = {
   image: "image",
-  options: "options",
   delete: "delete",
   edit: "edit",
-  location: "location",
 };
 const goToMenu = (menuName) => {
-  currentMenu.value = menuName;
+  currentMenu.value != menuName
+    ? (currentMenu.value = menuName)
+    : (currentMenu.value = menu.image);
 };
+
+const updateTitle = (text) => {
+  
+}
 
 defineProps({
   id: Number,
   url: String,
   title: String,
-  location: String,
 });
 </script>
 
@@ -33,7 +34,7 @@ defineProps({
       :style="`background-image:url(${url})`"
       v-if="currentMenu == menu.image"
     ></div>
-    <MenuOptions v-if="currentMenu == menu.options" @menuChanged="goToMenu" />
+
     <MenuEdit
       v-if="currentMenu == menu.edit"
       :title="title"
@@ -41,22 +42,12 @@ defineProps({
     />
     <div class="card__wrapper">
       <section class="card__buttons">
-        <IconAddLocation />
-        <IconOptions
-          @click="
-            currentMenu != menu.options
-              ? goToMenu(menu.options)
-              : goToMenu(menu.image)
-          "
-        />
+        <IconPencil @click="goToMenu(menu.edit)" />
+        <IconTrash @click="goToMenu(menu.delete)" />
       </section>
     </div>
     <section class="card__info">
       <h3 class="card__title">{{ title }}</h3>
-      <div class="card__location">
-        <IconLocation />
-        <p class="card__p">{{ location }}</p>
-      </div>
     </section>
   </section>
 </template>
@@ -77,12 +68,6 @@ defineProps({
   }
   &__info {
     padding: 1rem 2rem;
-  }
-  &__location {
-    font-family: $secondary-font-family;
-    font-size: map-get($map: $font-size, $key: "sm");
-    padding-bottom: 0.5rem;
-    @include flex($direction: row, $justify: flex-start);
   }
   &__p {
     padding-left: 1rem;

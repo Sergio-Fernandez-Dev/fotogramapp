@@ -5,12 +5,12 @@ defineProps({
   title: String,
 });
 const input = ref();
-const emit = defineEmits(["titleChanged"]);
 
 onMounted(() => {
-  input.value = document.getElementById("input");
+  input.value = document.getElementById("card-input");
   input.value.focus();
 });
+const emit = defineEmits(["titleChanged"]);
 
 const processInput = (text) => {
   emit("titleChanged", text);
@@ -24,7 +24,7 @@ const processInput = (text) => {
         >Escribe el nuevo título:</label
       >
       <input
-        id="input"
+        id="card-input"
         class="menu__input"
         type="text"
         :value="title"
