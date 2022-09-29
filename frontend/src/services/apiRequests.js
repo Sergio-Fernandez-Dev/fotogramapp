@@ -1,11 +1,14 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:8000/";
+const baseUrl = "http://localhost:8000/api/v1/";
 
 const doGetRequest = async (entity) => {
   const options = {
     method: "GET",
     url: baseUrl + entity.toLowerCase(),
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
   };
   const response = await sendRequest(options);
 
@@ -18,7 +21,7 @@ const doPostRequest = async (entity, data) => {
     url: baseUrl + entity.toLowerCase(),
     data: data,
     headers: {
-      Accept: "application/json",
+      "Accept": "application/json",
       "Content-Type": "multipart/form-data",
     },
   };
