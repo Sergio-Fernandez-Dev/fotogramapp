@@ -9,5 +9,5 @@ class Image extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'url'];
+   protected $fillable = ['title', 'image'];
 }

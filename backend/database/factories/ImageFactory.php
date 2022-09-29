@@ -18,7 +18,7 @@ class ImageFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
-            'url' => $this->faker->imageUrl($width = 640, $height = 480),
+            'image' => $this->faker->imageUrl($width = 640, $height = 480),
 
         ];
     }
