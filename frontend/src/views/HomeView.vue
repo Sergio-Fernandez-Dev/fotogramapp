@@ -1,8 +1,9 @@
 <script setup>
 import ImageCard from "@/components/card/ImageCard.vue";
-import { onMounted, ref } from "vue";
+import { onMounted } from "vue";
 import { doGetRequest } from "@/services/apiRequests";
 import { useCardStore } from "@/stores/cardList";
+import UploadForm from "../components/forms/UploadForm.vue";
 
 const store = useCardStore();
 
@@ -14,6 +15,7 @@ onMounted(async () => {
 
 <template>
   <div class="grid">
+    <UploadForm />
     <ImageCard
       v-for="(card, index) in store.cardList.value"
       :key="index"

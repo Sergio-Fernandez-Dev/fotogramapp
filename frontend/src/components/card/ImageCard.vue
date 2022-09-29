@@ -5,11 +5,6 @@ import IconLocation from "@/components/icons/IconLocation.vue";
 import MenuOptions from "./menus/MenuOptions.vue";
 import MenuEdit from "./menus/MenuEdit.vue";
 import { ref } from "vue";
-import { useCardStore } from "@/stores/cardList";
-
-const store = useCardStore();
-const cardList = store.cardList.value;
-console.log(cardList);
 
 const currentMenu = ref("image");
 const menu = {
@@ -22,7 +17,6 @@ const menu = {
 const goToMenu = (menuName) => {
   currentMenu.value = menuName;
 };
-
 
 defineProps({
   id: Number,
@@ -67,7 +61,7 @@ defineProps({
   </section>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .card {
   border: 0.1rem solid map-get($map: $color, $key: "border");
   box-shadow: 0.3rem 0.3rem 0.8rem;
