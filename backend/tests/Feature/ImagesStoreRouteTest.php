@@ -17,7 +17,7 @@ class ImagesStoreRouteTest extends TestCase
     {
         $this->withExceptionHandling();
 
-        Storage::fake('test_storage');
+        Storage::fake('local');
         $file = UploadedFile::fake()->create('file.jpg');
 
         $request = [
@@ -32,7 +32,7 @@ class ImagesStoreRouteTest extends TestCase
     {
         $this->withExceptionHandling();
 
-        Storage::fake('test_storage');
+        Storage::fake('local');
         $file = UploadedFile::fake()->create('file.jpg');
 
         $request = [
@@ -47,7 +47,7 @@ class ImagesStoreRouteTest extends TestCase
     {
         $this->withExceptionHandling();
 
-        Storage::fake('test_storage');
+        Storage::fake('local');
         $file = UploadedFile::fake()->create('file.jpg');
 
         $request = [
@@ -63,7 +63,7 @@ class ImagesStoreRouteTest extends TestCase
     {
         $this->withExceptionHandling();
 
-        Storage::fake('test_storage');
+        Storage::fake('local');
         $file = UploadedFile::fake()->create('file.jpg');
 
         $request = [
