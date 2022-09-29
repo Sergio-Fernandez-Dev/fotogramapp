@@ -27,12 +27,18 @@ class ImageController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => ['required', 'string'],
-            'url' => ['required', 'string'],
+            'title' => 'required|string',
+            'image' => 'required|image|mimes:png,jpg,jpeg',
         ]);
 
-        $result = Image::create($request->all());
-        return \response()->json($request);
+        $image_path = $request->file('image')->store('image', 'public');
+
+        $data = Image::create([
+            'title' => $request->title,
+            'image' => $image_path,
+        ]);
+
+        return response($data);
     }
 
     /**
@@ -62,7 +68,7 @@ class ImageController extends Controller
         $result = Image::find($id)
             ->update($request->all());
 
-        return \response()->json($request);
+        return \response()->json($result);
     }
 
     /**
@@ -74,7 +80,7 @@ class ImageController extends Controller
     public function destroy($id)
     {
         $result = Image::find($id);
-        if ($result == null){
+        if ($result == null) {
             return response('Usuario no encontrado');
         }
         $result->delete();
