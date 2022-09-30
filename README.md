@@ -16,7 +16,7 @@ Al entrar a la home se muestran todas las fotos subidas por el usuario
  
 <img width="1181" alt="Captura de pantalla 2022-09-30 a las 18 55 50" src="https://user-images.githubusercontent.com/63967914/193325374-070cd58f-23f8-4cb7-a082-aebb94913ac2.png">
 
-Automáticamente, aparecerá el nombre del archivo como título por defecto, el cuál podrá ser cambiado por el usuario si éste lo desea. Cuando el usuario haga click en el icono de envío, la imagen será guardada y se mostrará instantáneamente en la lista de imágenes. (<font color="red"> ¡ATEMCIÓN! Las imágenes deberán tener un tamaño inferior a 2,2mb y una resolución máxima de 2048px.
+Automáticamente, aparecerá el nombre del archivo como título por defecto, el cuál podrá ser cambiado por el usuario si éste lo desea. Cuando el usuario haga click en el icono de envío, la imagen será guardada y se mostrará instantáneamente en la lista de imágenes. (¡ATENCIÓN! Las imágenes deberán tener un tamaño inferior a 2,2mb y una resolución máxima de 2048px).
 
 <img width="293" alt="Captura de pantalla 2022-09-30 a las 18 56 19" src="https://user-images.githubusercontent.com/63967914/193326063-f227d974-b089-4900-984a-65e852a3edec.png">
 
