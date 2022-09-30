@@ -1,14 +1,10 @@
 <script setup>
-import { RouterLink, RouterView } from "vue-router";
+import { RouterView } from "vue-router";
 </script>
 
 <template>
   <header class="header">
-    <nav class="nav">
-      <RouterLink class="nav__link" to="/">
-        <h1 class="nav__h1">Fotogramapp</h1>
-      </RouterLink>
-    </nav>
+    <h1 class="header__h1">Fotogramapp</h1>
   </header>
   <main class="main">
     <RouterView />
@@ -17,25 +13,16 @@ import { RouterLink, RouterView } from "vue-router";
 </template>
 
 <style lang="scss">
-  .header {
+.header {
   width: 100%;
   height: 5rem;
   background-color: $black-color;
   @include flex($direction: row);
-}
-
-.nav {
-  width: 100%;
-  max-width: $max-width;
-  height: 100%;
-  padding: 0 3rem;
-  @include flex($direction: row);
-  &__link {
-    fill: map-get($map: $color, $key: 'primary');
-  }
   &__h1 {
     font-family: $logo-font-family;
     font-size: map-get($map: $font-size, $key: "lg");
+    color: map-get($map: $color, $key: "primary");
+    cursor: default;
   }
 }
 

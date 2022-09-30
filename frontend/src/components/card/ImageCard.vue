@@ -5,7 +5,11 @@ import IconPencil from "../icons/IconPencil.vue";
 import IconTrash from "../icons/IconTrash.vue";
 import { ref } from "vue";
 import { useCardStore } from "@/stores/cardList";
-import { doGetRequest, doPatchRequest, doDeleteRequest } from "../../services/apiRequests";
+import {
+  doGetRequest,
+  doPatchRequest,
+  doDeleteRequest,
+} from "../../services/apiRequests";
 
 const store = useCardStore();
 
