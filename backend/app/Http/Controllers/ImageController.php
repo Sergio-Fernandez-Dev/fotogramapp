@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
@@ -35,7 +36,7 @@ class ImageController extends Controller
 
         $data = Image::create([
             'title' => $request->title,
-            'image' => url("storage").'/'.$image_path,
+            'image' => url("storage") . '/' . $image_path,
         ]);
 
         return response($data);
@@ -80,9 +81,7 @@ class ImageController extends Controller
     public function destroy($id)
     {
         $result = Image::find($id);
-        if ($result == null) {
-            return response('Usuario no encontrado');
-        }
+        Storage::disk('public')->delete($result->image);
         $result->delete();
     }
 }
