@@ -1,8 +1,19 @@
 <script setup>
 import MenuEdit from "./menus/MenuEdit.vue";
-import { ref } from "vue";
+import MenuConfirmDeletion from "./menus/MenuConfirmDeletion.vue";
 import IconPencil from "../icons/IconPencil.vue";
 import IconTrash from "../icons/IconTrash.vue";
+import { ref } from "vue";
+import { useCardStore } from "@/stores/cardList";
+import { doGetRequest, doPatchRequest, doDeleteRequest } from "../../services/apiRequests";
+
+const store = useCardStore();
+
+const props = defineProps({
+  id: Number,
+  url: String,
+  title: String,
+});
 
 const currentMenu = ref("image");
 const menu = {
@@ -10,35 +21,45 @@ const menu = {
   delete: "delete",
   edit: "edit",
 };
+
 const goToMenu = (menuName) => {
   currentMenu.value != menuName
     ? (currentMenu.value = menuName)
     : (currentMenu.value = menu.image);
 };
 
-const updateTitle = (text) => {
-  
-}
+const updateTitle = async (modifiedTitle) => {
+  console.log("props " + props.id);
+  const data = { title: modifiedTitle };
+  doPatchRequest("images", props.id, data);
+  currentMenu.value = menu.image;
+  store.cardList.value = await doGetRequest("images");
+};
 
-defineProps({
-  id: Number,
-  url: String,
-  title: String,
-});
+const deleteCard = async () => {
+  doDeleteRequest("images", props.id);
+  currentMenu.value = menu.image;
+  store.cardList.value = await doGetRequest("images");
+};
 </script>
 
 <template>
   <section class="card">
     <div
+      v-if="currentMenu == menu.image"
       class="card__img"
       :style="`background-image:url(${url})`"
-      v-if="currentMenu == menu.image"
     ></div>
-
     <MenuEdit
       v-if="currentMenu == menu.edit"
       :title="title"
       @titleChanged="updateTitle"
+    />
+    <MenuConfirmDeletion
+      v-if="currentMenu == menu.delete"
+      :id="id"
+      @deletionAccepted="deleteCard"
+      @deletionCancelled="goToMenu(menu.image)"
     />
     <div class="card__wrapper">
       <section class="card__buttons">

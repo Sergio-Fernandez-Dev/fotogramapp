@@ -12,8 +12,8 @@ onMounted(() => {
 });
 const emit = defineEmits(["titleChanged"]);
 
-const processInput = (text) => {
-  emit("titleChanged", text);
+const processInput = (modifiedTitle) => {
+  emit("titleChanged", modifiedTitle);
 }
 </script>
 

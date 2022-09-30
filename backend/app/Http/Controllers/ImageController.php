@@ -35,7 +35,7 @@ class ImageController extends Controller
 
         $data = Image::create([
             'title' => $request->title,
-            'image' => url('storage').'/'.$image_path,
+            'image' => url("storage").'/'.$image_path,
         ]);
 
         return response($data);

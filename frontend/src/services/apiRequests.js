@@ -17,7 +17,7 @@ const doGetRequest = async (entity) => {
 
 const doPostRequest = async (entity, data) => {
   const options = {
-    method: "POST ",
+    method: "POST",
     url: baseUrl + entity.toLowerCase(),
     data: data,
     headers: {
@@ -30,6 +30,37 @@ const doPostRequest = async (entity, data) => {
   return response;
 };
 
+async function doPatchRequest(entity, id, data) {
+  const options = {
+    method: "PATCH",
+    url: baseUrl + entity.toLowerCase() + "/" + id,
+    data: data,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Content-Type": "application/json",
+    },
+  };
+  const response = await sendRequest(options);
+
+  return response;
+}
+
+async function doDeleteRequest(entity, id) {
+  const options = {
+    method: "DELETE",
+    url: baseUrl + entity.toLowerCase() + "/" + id,
+    headers: {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json",
+      },
+    },
+  };
+  const response = await sendRequest(options);
+
+  return response;
+}
+
 const sendRequest = async (options) => {
   try {
     const response = await axios.request(options);
@@ -40,4 +71,4 @@ const sendRequest = async (options) => {
   }
 };
 
-export { doGetRequest, doPostRequest };
+export { doGetRequest, doPostRequest, doPatchRequest, doDeleteRequest };

@@ -1,28 +1,35 @@
 <script setup>
 import { ref } from "vue";
-import { doPostRequest } from "../../services/apiRequests";
+import { doGetRequest, doPostRequest } from "../../services/apiRequests";
 import IconAddImage from "../icons/IconAddImage.vue";
+import { useCardStore } from "@/stores/cardList";
 
+const store = useCardStore();
 const form = ref({
   title: "",
   image: "",
 });
 
-const prepareImage = (event) => {
+const selectFile = (event) => {
   form.value.image = event.target.files[0];
+  form.value.title = form.value.image.name;
   console.log(form.value.image);
 };
 
-const processInput = () => {
-  doPostRequest("images", form.value);
+const processInput = async () => {
+  let data = new FormData();
+  data.append("title", form.value.title);
+  data.append("image", form.value.image);
+  doPostRequest("images", data);
+  store.cardList.value = await doGetRequest("images");
 };
 </script>
 
 <template>
-  <form class="card">
+  <div class="card">
     <div class="card__img">
       <IconAddImage />
-      <input class="card__input--hidden" type="file" @change="prepareImage" />
+      <input class="card__input--hidden" type="file" @change="selectFile" />
     </div>
     <div class="card__wrapper"></div>
     <section class="card__info">
@@ -32,10 +39,10 @@ const processInput = () => {
         class="card__input"
         type="text"
         v-model="form.title"
-        @keydown.enter="processInput(input.value)"
+        @keydown.enter="processInput"
       />
     </section>
-  </form>
+  </div>
 </template>
 
 <style lang="scss" scoped>
