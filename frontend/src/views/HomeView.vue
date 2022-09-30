@@ -9,7 +9,6 @@ const store = useCardStore();
 
 onMounted(async () => {
   store.cardList.value = await doGetRequest("images");
-  console.log(store.cardList.value);
 });
 </script>
 

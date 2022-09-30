@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         ]);
         Image::factory()->create([
             'title' => '_DSC4958.jpg',
-            'image' => 'http://localhost:8000/storage/image/jshwIGVJWzFkPkm0f2NHBK7WtuMoMlGMAPlPZwZq.jpg'
+            'image' => 'http://localhost:8000/storage/image/QzhYhJfDc4uYa4qmW8qkN42SVecml6Q9NWrJuXmC.jpg'
         ]);
         Image::factory()->create([
             'title' => 'Gatete guapo',
