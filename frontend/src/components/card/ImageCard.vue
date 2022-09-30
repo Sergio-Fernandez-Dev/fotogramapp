@@ -63,8 +63,8 @@ const deleteCard = async () => {
     />
     <div class="card__wrapper">
       <section class="card__buttons">
-        <IconPencil @click="goToMenu(menu.edit)" />
-        <IconTrash @click="goToMenu(menu.delete)" />
+        <IconPencil class="card__icon" @click="goToMenu(menu.edit)" />
+        <IconTrash class="card__icon" @click="goToMenu(menu.delete)" />
       </section>
     </div>
     <section class="card__info">
@@ -86,6 +86,9 @@ const deleteCard = async () => {
     height: 24rem;
     background-position: center;
     background-size: cover;
+  }
+  &__icon {
+    cursor: pointer;
   }
   &__info {
     padding: 1rem 2rem;

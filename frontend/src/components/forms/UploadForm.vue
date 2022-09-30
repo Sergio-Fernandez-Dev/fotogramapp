@@ -3,6 +3,7 @@ import { ref } from "vue";
 import { doGetRequest, doPostRequest } from "../../services/apiRequests";
 import IconAddImage from "../icons/IconAddImage.vue";
 import { useCardStore } from "@/stores/cardList";
+import IconSend from "../icons/IconSend.vue";
 
 const store = useCardStore();
 const form = ref({
@@ -22,17 +23,26 @@ const processInput = async () => {
   data.append("image", form.value.image);
   doPostRequest("images", data);
   store.cardList.value = await doGetRequest("images");
+  form.value.title = "";
+  doGetRequest("cardList", data);
 };
 </script>
 
 <template>
   <div class="card">
     <div class="card__img">
-      <IconAddImage />
-      <input class="card__input--hidden" type="file" @change="selectFile" />
+      <label for="hidden-input">
+        <IconAddImage />
+      </label>
+      <input
+        class="card__input--hidden"
+        id="hidden-input"
+        type="file"
+        accept="image/png, image/jpg, image/jpeg"
+        @change="selectFile"
+      />
     </div>
-    <div class="card__wrapper"></div>
-    <section class="card__info">
+    <div class="card__text">
       <label class="card__label" for="input">Título: </label>
       <input
         id="input"
@@ -41,30 +51,38 @@ const processInput = async () => {
         v-model="form.title"
         @keydown.enter="processInput"
       />
-    </section>
+      <IconSend class="card__icon" @click="processInput" />
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .card {
   &__img {
-    width: 24rem;
-    height: 24rem;
+    border-bottom: 0.1rem solid map-get($map: $color, $key: "border");
+
     @include flex($direction: row);
   }
-  &__info {
+  &__drop {
     @include flex($direction: row);
   }
+
   &__input {
     border: none;
     border-bottom: 0.1rem solid map-get($map: $color, $key: "border");
     background-color: map-get($map: $color, $key: "background");
     &--hidden {
+      display: none;
     }
   }
   &__label {
     margin-right: 0.5rem;
     font-weight: bold;
+  }
+  &__text {
+    width: 100%;
+    padding: 2rem;
+    @include flex($direction: row, $justify: space-between);
   }
 }
 </style>
