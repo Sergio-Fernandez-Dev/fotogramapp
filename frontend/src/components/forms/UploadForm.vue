@@ -21,10 +21,11 @@ const processInput = async () => {
   let data = new FormData();
   data.append("title", form.value.title);
   data.append("image", form.value.image);
-  doPostRequest("images", data);
+  await doPostRequest("images", data);
+  store.cardList.value = await doGetRequest("images");
   form.value.image = "";
   form.value.title = "";
-  store.cardList.value = await doGetRequest("images");
+
 };
 </script>
 
